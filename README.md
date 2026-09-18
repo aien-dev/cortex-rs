@@ -4,9 +4,11 @@
 
 # cortex-rs
 
-[![Crates.io](https://img.shields.io/badge/crates.io-v0.1.0-orange.svg)](https://github.com/aien-dev/cortex-rs)
+[![CI](https://github.com/aien-dev/cortex-rs/actions/workflows/ci.yml/badge.svg)](https://github.com/aien-dev/cortex-rs/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue.svg)](LICENSE)
-[![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/aien-dev/cortex-rs)
+[![Security](https://img.shields.io/badge/tpm--vault-zero--disk--secrets-green.svg)](SECURITY.md)
+[![Standard](https://img.shields.io/badge/standard-unslop-black.svg)](CONTRIBUTING.md)
+[![Mission](https://img.shields.io/badge/mission-sovereign--defense-amber.svg)](https://drakestapleton.com)
 
 High-performance native Rust memory engine with SQLite FTS5 lexical recall, bi-encoder vector similarity, and hardware-secured loopback isolation.
 
