@@ -1,0 +1,23 @@
+{
+  "$schema": "https://aien.org/schemas/agent-v1.json",
+  "name": "cortex-rs",
+  "version": "0.1.0",
+  "description": "High-performance native Rust memory engine with SQLite FTS5 lexical recall and vector similarity",
+  "repository": "https://github.com/aien-dev/cortex-rs",
+  "license": "Apache-2.0 WITH LLVM-exception",
+  "architecture": [
+    "x86_64",
+    "aarch64-grace-blackwell"
+  ],
+  "conventions": {
+    "mandatory_branching": true,
+    "zero_em_dashes": true
+  },
+  "runtime": {
+    "rust": "1.85+"
+  },
+  "commands": {
+    "build": "cargo build --release",
+    "test": "cargo test"
+  }
+}
