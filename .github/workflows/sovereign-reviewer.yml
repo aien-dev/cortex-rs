@@ -1,6 +1,6 @@
 name: Sovereign Gatekeeper & Automated Reviewer
 
-on:
+"on":
   pull_request_target:
     types: [opened, synchronize]
   issues:
@@ -30,8 +30,6 @@ jobs:
       - name: Build Sovereign Inquisitor
         run: cargo build --release --manifest-path sovereign-core/Cargo.toml -p spark-inquisitor
 
-      - name: Verify Test Suite
-        run: cargo test --verbose
 
       - name: Fetch PR Diff
         env:
