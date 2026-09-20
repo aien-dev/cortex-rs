@@ -21,6 +21,7 @@ use tower_http::trace::TraceLayer;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 
 mod auth;
+mod bench;
 mod db;
 mod embeddings;
 mod handlers;
@@ -48,11 +49,21 @@ struct Args {
 
     #[arg(long)]
     import: Option<PathBuf>,
+
+    #[arg(long)]
+    bench: bool,
+
+    #[arg(long, default_value = "1000")]
+    bench_records: usize,
 }
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
+
+    if args.bench {
+        return bench::run_benchmark(args.bench_records);
+    }
 
     tracing_subscriber::registry()
         .with(tracing_subscriber::EnvFilter::try_from_default_env().unwrap_or_else(|_| "info".into()))
@@ -115,7 +126,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .layer(TraceLayer::new_for_http())
         .with_state(state);
 
-        // INVARIANT: Bind strictly to loopback 127.0.0.1 to guarantee zero LAN exposure
+    // INVARIANT: Bind strictly to loopback 127.0.0.1 to guarantee zero LAN exposure unless configured
     if args.host != "127.0.0.1" && args.host != "localhost" {
         tracing::warn!("Non-loopback binding detected ({}); enforcing local authentication.", args.host);
     }

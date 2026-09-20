@@ -24,6 +24,7 @@ impl Database {
         Ok(db)
     }
 
+    #[allow(dead_code)]
     pub fn open_in_memory() -> Result<Self> {
         let conn = Connection::open_in_memory()?;
         let db = Self {
@@ -404,6 +405,16 @@ impl Database {
             let fts_query = format!("\"{}\"", clean_q);
             if let Some(r) = run_fts(&fts_query) {
                 results = r;
+            }
+        }
+
+        if results.is_empty() {
+            let terms: Vec<&str> = clean_q.split_whitespace().collect();
+            if terms.len() > 1 {
+                let and_query = terms.join(" AND ");
+                if let Some(r) = run_fts(&and_query) {
+                    results = r;
+                }
             }
         }
 

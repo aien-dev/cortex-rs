@@ -41,6 +41,7 @@ pub fn cosine_similarity(a: &[f32], b: &[f32]) -> f32 {
     }
 }
 
+#[allow(dead_code)]
 pub fn cosine_distance(a: &[f32], b: &[f32]) -> f32 {
     1.0 - cosine_similarity(a, b)
 }
