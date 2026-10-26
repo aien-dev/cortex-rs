@@ -123,8 +123,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 .allow_origin([
                     "http://127.0.0.1:18095".parse().unwrap(),
                     "http://localhost:18095".parse().unwrap(),
-                    "http://192.168.1.108:18095".parse().unwrap(),
-                    "http://100.116.106.93:18095".parse().unwrap(),
                 ])
                 .allow_methods(Any)
                 .allow_headers(Any),
